@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-    /** protected $table = 'hxxi_users'; **/
+    protected $table = 'hxxi_users';
 
     /**
      * The attributes that are mass assignable.
@@ -38,17 +38,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-/**
-*  // Indicamos relación One to One
-*    public function users(){
-*        return $this->hasOne('App\User', 'id_user_jefe'); 
-*    }
-*
-*    // Indicamos relación One to One
-*    public function emp_empresas(){
-*        return $this->hasOne('App\Modelos\Emp_Empresa', 'id_empresa'); 
-*    }
-**/
+
+    // Indicamos relación One to One
+    public function users(){
+        return $this->hasOne('App\User', 'id_user_jefe'); 
+    }
+
+    // Indicamos relación One to One
+    public function emp_empresas(){
+        return $this->hasOne('App\Modelos\Emp_Empresa', 'id_empresa'); 
+    }
+
 
 
 }

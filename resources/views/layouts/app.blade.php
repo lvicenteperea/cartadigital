@@ -44,20 +44,18 @@
 
 </head>
 <body>
-    @include('includes.menu_superior');
+    @include('includes.menu_superior')
 
     <div class="container-fluid">
       <div class="row">
         
-        @include('includes.menu_lateral');
+        @include('includes.menu_lateral')
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	
-	      <main class="py-4">
-	      	@yield('content')
-	      </main>
-    
-        </div>
+           <main class="py-4">
+              @yield('content')
+           </main>
+         </div>
       </div>
     </div>
 
