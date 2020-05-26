@@ -20,11 +20,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
-
-Route::get('/emp/local/{id}',           'Emp_LocalController@index')->name('emp.local');
-
-
 Auth::routes();
 /*  Route::get('/home', 'HomeController@index')->name('home');  */
 Route::get('/', 'HomeController@index')->name('home');
+
+
+Route::get('/user/edita',        'UserController@edita')->name('user.edita');
+Route::post('/user/update',      'UserController@update')->name('user.update');
+
+Route::get('/emp/local/{id}',    'Emp_LocalController@index')->name('emp.local');
