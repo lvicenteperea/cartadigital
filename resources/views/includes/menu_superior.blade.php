@@ -9,6 +9,7 @@
             </button>
             <a class="navbar-brand" href="{{ route('dashboard') }}">{{ Config::get('app.name') }}</a>
         </div>
+		<!-- Cambio en la rama Cambios_Menu_sup  -->
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
