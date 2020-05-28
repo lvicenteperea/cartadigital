@@ -183,6 +183,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Propios...
+         */
+        App\Providers\FechasServiceProvider::class,
+        App\Providers\VariosServiceProvider::class,
+
+
     ],
 
     /*
@@ -234,6 +241,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Fechas' => App\Helpers\Fechas::class,
+        'Varios' => App\Helpers\Varios::class,
 
     ],
 

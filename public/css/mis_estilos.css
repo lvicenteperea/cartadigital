@@ -1,0 +1,41 @@
+.image-container{
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.image-container img{
+    width: 100%;
+}
+
+.gran-avatar{
+    max-height: 300px;
+}
+
+.avatar{
+    margin-bottom: 15px;
+    width: 55px;
+}
+
+.pub_image{
+    margin-bottom: 25px;
+}
+
+.navbar .container-avatar,
+.pub_image .container-avatar{
+    width: 35px;
+    height: 35px;
+    border-radius: 900px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.navbar .container-avatar img,
+.pub_image .container-avatar img{
+    width: 100%;
+}
+
+.pub_image .container-avatar{
+    float: left;
+    margin-right: 15px;
+}

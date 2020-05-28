@@ -24,8 +24,9 @@ Auth::routes();
 /*  Route::get('/home', 'HomeController@index')->name('home');  */
 Route::get('/', 'HomeController@index')->name('home');
 
-
-Route::get('/user/edita',        'UserController@edita')->name('user.edita');
-Route::post('/user/update',      'UserController@update')->name('user.update');
+Route::get('/user/edita',             'UserController@edita')->name('user.edita');
+Route::post('/user/update',           'UserController@update')->name('user.update');
+Route::get('/user/perfil',            'UserController@perfil')->name('user.perfil');
+Route::get('/user/avatar/{NombFic?}', 'UserController@getImagen')->name('user.avatar');
 
 Route::get('/emp/local/{id}',    'Emp_LocalController@index')->name('emp.local');

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 class="page-header">Configurar usuario</h1>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -19,7 +20,6 @@
 
                             <div class="col-md-6">
                                 <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ Auth::user()->nombre }}" required autocomplete="nombre" autofocus>
-
                                 @error('nombre')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,7 +33,6 @@
 
                             <div class="col-md-6">
                                 <input id="apellidos" type="text" class="form-control @error('apellidos') is-invalid @enderror" name="apellidos" value="{{ Auth::user()->apellidos }}" required autocomplete="apellidos" autofocus>
-
                                 @error('apellidos')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -47,7 +46,6 @@
 
                             <div class="col-md-6">
                                 <input id="nick" type="text" class="form-control @error('nick') is-invalid @enderror" name="nick" value="{{ Auth::user()->nick }}" required autocomplete="nick" autofocus>
-
                                 @error('nick')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -61,7 +59,6 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email">
-
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -71,12 +68,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
+                            <label for="imagen_path" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
-                                <input id="imagen" type="text" class="form-control @error('imagen') is-invalid @enderror" name="imagen" value="{{ Auth::user()->imagen }}" required autocomplete="imagen">
-
-                                @error('imagen')
+                                @include('includes.avatar')
+                                <input id="imagen_path" type="file" class="form-control @error('imagen_path') is-invalid @enderror" name="imagen_path" autocomplete="imagen_path">
+                                @error('imagen_path')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -84,12 +81,16 @@
                             </div>
                         </div>
 
-
                         <div class="form-group row">
                             <label for="id_empresa" class="col-md-4 col-form-label text-md-right">{{ __('Empresa') }}</label>
 
                             <div class="col-md-6">
-                                <input id="id_empresa" type="text" class="form-control @error('id_empresa') is-invalid @enderror" name="id_empresa" value="{{ Auth::user()->id_empresa }}" required autocomplete="id_empresa">
+                                <!-- input id="id_empresa" type="text" class="form-control @error('id_empresa') is-invalid @enderror" name="id_empresa" value="{ { Auth::user()->id_empresa }}" required autocomplete="id_empresa" -->
+                                <select name="id_empresa[]" id="id_empresa" class="form-control @error('id_empresa') is-invalid @enderror" class="form-control">
+                                    @foreach($empresas as $empresa)
+                                        <option value="{{ $empresa->id }}" {{ (Auth::user()->id_empresa == $empresa->id) ? 'selected':'' }}> {{ $empresa->nombre }}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('id_empresa')
                                     <span class="invalid-feedback" role="alert">
@@ -103,8 +104,12 @@
                             <label for="id_user_jefe" class="col-md-4 col-form-label text-md-right">{{ __('Jefe') }}</label>
 
                             <div class="col-md-6">
-                                <input id="id_user_jefe" type="text" class="form-control @error('id_user_jefe') is-invalid @enderror" name="id_user_jefe" value="{{ Auth::user()->id_user_jefe }}" required autocomplete="id_user_jefe">
-
+                                <!-- input id="id_user_jefe" type="text" class="form-control @error('id_user_jefe') is-invalid @enderror" name="id_user_jefe" value="{ { Auth::user()->id_user_jefe }}" required autocomplete="id_user_jefe" -->
+                                <select name="id_user_jefe[]" id="id_user_jefe" class="form-control @error('id_user_jefe') is-invalid @enderror" class="form-control">
+                                    @foreach($jefes as $jefe)
+                                        <option value="{{ $jefe->id }}" {{ ($usuario->id_user_jefe == $jefe->id) ? 'selected':'' }}> {{ $jefe->nombre }}</option>
+                                    @endforeach
+                                </select>
                                 @error('id_user_jefe')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
