@@ -30,3 +30,6 @@ Route::get('/user/perfil',            'UserController@perfil')->name('user.perfi
 Route::get('/user/avatar/{NombFic?}', 'UserController@getImagen')->name('user.avatar');
 
 Route::get('/emp/local/{id}',    'Emp_LocalController@index')->name('emp.local');
+
+
+Route::get('mail/envia', 'MailController@envia')->name('mail.envia');

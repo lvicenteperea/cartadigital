@@ -127,6 +127,11 @@
                         </div>
                     </form>
                 </div>
+                <div class="card-body">
+                    <a href="{{ route('password.reset') }}">Cambio de contraseña</a>
+                        @csrf
+                    </form>
+                </div>
             </div>
         </div>
     </div>

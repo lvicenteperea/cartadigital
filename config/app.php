@@ -183,13 +183,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        /*
-         * Propios...
-         */
-        App\Providers\FechasServiceProvider::class,
-        App\Providers\VariosServiceProvider::class,
-
-
     ],
 
     /*
