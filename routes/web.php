@@ -26,6 +26,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/user/edita',             'UserController@edita')->name('user.edita');
 Route::post('/user/update',           'UserController@update')->name('user.update');
+Route::post('/user/updatePwd',        'UserController@updatePwd')->name('user.updatePwd');
 Route::get('/user/perfil',            'UserController@perfil')->name('user.perfil');
 Route::get('/user/avatar/{NombFic?}', 'UserController@getImagen')->name('user.avatar');
 

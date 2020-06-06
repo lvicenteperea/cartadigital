@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\File;
 use App\Modelos\Emp_Empresa;
 use App\User;
 
+use Hash;
+
 class UserController extends Controller
 {
     public function __construct(){
@@ -73,7 +75,7 @@ class UserController extends Controller
         $user->update();
 
         // **************************  Redirección   *****************************
-        return redirect()->route('dashboard')
+        return redirect()->route('user.perfil')
                          ->with(['message'=>'Usuario actualizado correctamente']);
     }
 
@@ -90,4 +92,54 @@ class UserController extends Controller
 
         return new Response($file, 200);
     }
+
+    /**
+     * 
+     * Modificación de la PWD del usuario conectado.
+     * 
+     * http://jquery-manual.blogspot.com/2015/11/14-tutorial-de-laravel-5-update.html
+     * La acción updatePassword primero valida los atributos del formularios, 
+     * si la validación falla el usuario es redireccionado nuevamente al 
+     * formulario con los mensajes de error, si pasa la validación primero 
+     * comprobamos si el atributo "mypassword" coincide con el actual password 
+     * del usuario, de ser así, actualizamos el password del usuario y lo 
+     * redireccionamos a "user" con un "status", de lo contrario, lo 
+     * redireccionamos nuevamente al formulario con un mensaje flash "message" 
+     * con un error indicando que sus credenciales son incorrectas.
+     * 
+     */
+    public function updatePwd(Request $request){
+        $rules = [
+            'mypassword' => 'required',
+            'password' => 'required|confirmed|min:6|max:18',
+        ];
+        
+        $messages = [
+            'mypassword.required' => 'El campo es requerido',
+            'password.required' => 'El campo es requerido',
+            'password.confirmed' => 'Los passwords no coinciden',
+            'password.min' => 'El mínimo permitido son 6 caracteres',
+            'password.max' => 'El máximo permitido son 18 caracteres',
+        ];
+        
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()){
+            return redirect('user/password')->withErrors($validator);
+        }
+        else{
+            if (Hash::check($request->mypassword, Auth::user()->password)){
+                $user = new User;
+                $user->where('email', '=', Auth::user()->email)
+                     ->update(['password' => bcrypt($request->password)]);
+                return redirect('user')->with('status', 'Password cambiado con éxito');
+            }
+            else
+            {
+                return redirect('user/password')->with('message', 'Credenciales incorrectas');
+            }
+        }        
+    }
+
+
+
 }

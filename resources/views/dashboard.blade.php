@@ -3,6 +3,8 @@
 @section('content')
         <h1 class="page-header">Dashboard</h1>
 
+        @include('includes.mensaje')
+ 
         <div class="row placeholders">
             @for ($i = 1; $i < 5; $i++)
                 <div class="col-xs-6 col-sm-3 placeholder">
