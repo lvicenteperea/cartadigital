@@ -131,9 +131,11 @@ return [
     'custom' => [
         'password' => [
             'min' => 'La :attribute debe contener :min o más caracteres',
+            'mi_pwd' => 'No ha pasado mi validación de PWD',
         ],
         'email' => [
             'unique' => 'El :attribute ya ha sido registrado.',
+            'check_dns' => 'Error en la validación de DNS',
         ],
     ],
 

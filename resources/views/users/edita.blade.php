@@ -12,6 +12,11 @@
                 <div class="card-header"><h3>{{ __('Configuración de mi Cuenta') }}</h3></div>
                 <br/>
 
+                <!-- ------------------------------------------------------------------------------------ -->
+                <!-- ------------------------------------------------------------------------------------ -->
+                <!-- Formulario cambio de datos personales  -->
+                <!-- ------------------------------------------------------------------------------------ -->
+                <!-- ------------------------------------------------------------------------------------ -->
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
                         @csrf
@@ -128,7 +133,14 @@
                         </div>
                     </form>
                 </div>
+
                 <hr/>
+                
+                <!-- ------------------------------------------------------------------------------------ -->
+                <!-- ------------------------------------------------------------------------------------ -->
+                <!-- Formulario cambio de contraseña  -->
+                <!-- ------------------------------------------------------------------------------------ -->
+                <!-- ------------------------------------------------------------------------------------ -->
                 <div class="card">
                     <div class="card-header"><h3>{{ __('Cambio de contraseña') }}</h3></div>
                     <br/>
@@ -139,7 +151,8 @@
                             <div class="form-group row">
                                 <label for="mypassword" class="col-md-4 col-form-label text-md-right">{{ __('Mi Contraseña') }}</label>
                                 <div class="col-md-6">
-                                    <input id="mypassword" type="password" class="form-control @error('mypassword') is-invalid @enderror" name="mypassword" value="{{ Auth::user()->password }}" required autocomplete="mypassword" autofocus>
+                                    <input id="mypassword" type="password" class="form-control @error('mypassword') is-invalid @enderror" name="mypassword" 
+                                           value="{{ \Auth::user()->password }}" required autocomplete="mypassword" autofocus>
                                     @error('mypassword')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

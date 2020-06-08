@@ -7,11 +7,12 @@ use Illuminate\Http\Response;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 use App\Modelos\Emp_Empresa;
 use App\User;
 
-use Hash;
 
 class UserController extends Controller
 {
@@ -49,10 +50,10 @@ class UserController extends Controller
 
         // ************************  Validación de variables    *****************************
         $this->validate($request, [
-            'nombre'    => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'nick'      => 'required|string|max:255|unique:users,nick,'.$id,
-            'email'     => 'required|string|email|max:255|unique:users,email,'.$id
+            'nombre'    => 'required|string|min:3|max:255',
+            'apellidos' => 'required|string|min:3|max:255',
+            'nick'      => 'required|string|min:5|max:255|unique:users,nick,'.$id,
+            'email'     => 'required|string|email|max:255|check_dns|unique:users,email,'.$id
         ]);
 
         // *************************   Asignación de variables    *****************************
@@ -109,9 +110,10 @@ class UserController extends Controller
      * 
      */
     public function updatePwd(Request $request){
+
         $rules = [
             'mypassword' => 'required',
-            'password' => 'required|confirmed|min:6|max:18',
+            'password' => 'required|confirmed|min:6|max:18|mi_pwd',
         ];
         
         $messages = [
@@ -120,22 +122,25 @@ class UserController extends Controller
             'password.confirmed' => 'Los passwords no coinciden',
             'password.min' => 'El mínimo permitido son 6 caracteres',
             'password.max' => 'El máximo permitido son 18 caracteres',
+//            'password.mi_pwd' => 'No ha pasado la de espacios',
         ];
         
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()){
-            return redirect('user/password')->withErrors($validator);
+            return redirect()->route('user.edita')->withErrors($validator);
         }
         else{
-            if (Hash::check($request->mypassword, Auth::user()->password)){
+            if (Hash::check($request->mypassword, \Auth::user()->password)){
                 $user = new User;
-                $user->where('email', '=', Auth::user()->email)
+                $user->where('email', '=', \Auth::user()->email)
                      ->update(['password' => bcrypt($request->password)]);
-                return redirect('user')->with('status', 'Password cambiado con éxito');
+
+                return redirect()->route('user.perfil')->with('message', 'Password cambiado con éxito');
             }
             else
             {
-                return redirect('user/password')->with('message', 'Credenciales incorrectas');
+                return redirect()->route('user.edita')
+                                 ->with('message', 'Credenciales incorrectas');
             }
         }        
     }
