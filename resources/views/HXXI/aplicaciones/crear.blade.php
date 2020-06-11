@@ -17,33 +17,29 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-header"><h3>{{ __('Editar') }}</h3></div>
+                    <div class="card-header"><h3>{{ __('Crear nueva aplicación') }}</h3></div>
                     <br/>
 
                     <div class="card">
-                    <!-- div class="card-header"><h3>{{ __('Editar') }}</h3></div>
+                    <!-- div class="card-header"><h3>{ { __('Nueva aplicación') }}</h3></div>
                         <br/ -->
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('hxxi.aplicaciones.update', $hxxi_aplicacion) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('hxxi.aplicaciones.create') }}" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
-
                                 <div class="form-group row">
                                     <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
                                     <div class="col-md-6">
-                                        <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre"
-                                               value="{{ $hxxi_aplicacion->Nombre }}" required autofocus>
+                                        <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="" required autofocus>
                                         @error('nombre')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <div class="text-danger">{{$message}}</div>
                                         </span>
                                         @enderror
-                                        <div class="text-danger">{{$errors->first('nombre')}}</div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
-                            </form>
+                             </form>
                         </div>
                     </div>
                 </div>

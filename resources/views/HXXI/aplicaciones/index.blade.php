@@ -31,36 +31,30 @@
                                 <th>modificado</th>
                                 <th width="280px">Action</th>
                             </tr>
-                            @foreach ($hxxi_aplicacion as $apli)
+                            @foreach ($aplicaciones as $apli)
                                 <tr>
-                                    <td>{{ ++$i }} - {{ $apli->id }}</td>
+                                    <td>{{ $apli->id }}</td>
                                     <td>{{ $apli->Nombre }}</td>
                                     <td>{{ $apli->created_at }}</td>
                                     <td>{{ $apli->updated_at }}</td>
-                                    <td>
-                                        <form action="{{ route('hxxi.aplicaciones.borrar',$apli->id) }}" method="POST">
-
-                                            <a class="btn btn-info" href="{{ route('hxxi.aplicaciones.mostrar',$apli->id) }}">Mostrar</a>
-                                            <a class="btn btn-primary" href="{{ route('hxxi.aplicaciones.editar',$apli) }}">Editar</a>
-
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
+                                    <td><a href="{{ route('hxxi.aplicaciones.mostrar',$apli) }}" class="btn btn-info">Mostrar</a>
+                                        <a href="{{ route('hxxi.aplicaciones.editar',$apli) }}" class="btn btn-primary">Editar</a>
+                                        <a  href="" data-target="#modal-delete-{{$apli->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
                                     </td>
                                 </tr>
+
+                                <?php $modal = array("cabecera" => 'Confirmación de borrado',
+                                                     "texto"    => '¿Seguro que quieres borrar "'. $apli->Nombre .'"?',
+                                                     "boton1" => 'Cancelar',
+                                                     "boton2" => 'Confirma borrado');
+                                ?>
+                                @include('HXXI.aplicaciones.modal')
                             @endforeach
                         </table>
 
                         {!! $aplicaciones->links() !!}
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <main class="py-4">
-                    @yield('opcion', 'Vacío')
-                </main>
             </div>
         </div>
     </div>

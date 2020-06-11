@@ -24,16 +24,13 @@ Auth::routes();
 /*  Route::get('/home', 'HomeController@index')->name('home');  */
 Route::get('/', 'HomeController@index')->name('home');
 
-
 Route::get('/HXXI/aplicaciones/index','HXXI\AplicacionController@index')->name('hxxi.aplicaciones.index');
-Route::get('/HXXI/aplicaciones/mostrar','HXXI\AplicacionController@mostrar')->name('hxxi.aplicaciones.mostrar');
+Route::get('/HXXI/aplicaciones/mostrar/{id}','HXXI\AplicacionController@mostrar')->name('hxxi.aplicaciones.mostrar');
 Route::get('/HXXI/aplicaciones/editar/{hxxi_aplicacion}','HXXI\AplicacionController@editar')->name('hxxi.aplicaciones.editar');
-Route::post('/HXXI/aplicaciones/update/{hxxi_aplicacion}','HXXI\AplicacionController@update')->name('hxxi.aplicaciones.update');
+Route::put('/HXXI/aplicaciones/update/{hxxi_aplicacion}','HXXI\AplicacionController@update')->name('hxxi.aplicaciones.update');
 Route::get('/HXXI/aplicaciones/crear','HXXI\AplicacionController@crear')->name('hxxi.aplicaciones.crear');
-Route::get('/HXXI/aplicaciones/borrar','HXXI\AplicacionController@delete')->name('hxxi.aplicaciones.borrar');
-
-
-
+Route::post('/HXXI/aplicaciones/create','HXXI\AplicacionController@create')->name('hxxi.aplicaciones.create');
+Route::delete('/HXXI/aplicaciones/borrar/{hxxi_aplicacion}','HXXI\AplicacionController@delete')->name('hxxi.aplicaciones.borrar');
 
 Route::get('/user/edita',             'UserController@edita')->name('user.edita');
 Route::post('/user/update',           'UserController@update')->name('user.update');

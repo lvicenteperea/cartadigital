@@ -19,7 +19,7 @@ class AplicacionController extends Controller
         $aplicaciones = Hxxi_Aplicacion::latest()->paginate(5);
 
         return view('HXXI.aplicaciones.index',compact('aplicaciones'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 1);
     }
 
     /**
@@ -41,11 +41,12 @@ class AplicacionController extends Controller
      */
     public function create(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
+        $request->validate(['nombre' => 'required|min:3|max:255',
+                           ]);
 
-        Hxxi_Aplicacion::create($request->all());
+        $apli = new Hxxi_Aplicacion();
+        $apli->Nombre = $request->input('nombre');
+        $apli->save();
 
         return redirect()->route('hxxi.aplicaciones.index')
             ->with('success','Aplicación creada correctamente.');
@@ -57,9 +58,13 @@ class AplicacionController extends Controller
      * @param  \App\Modelos\HXXI\hxxi_aplicacion  $hxxi_aplicacion
      * @return \Illuminate\Http\Response
      */
-    public function mostrar(hxxi_aplicacion $hxxi_aplicacion)
+    public function mostrar($id)
     {
-        return view('HXXI.aplicaciones.mostrar',compact('hxxi_aplicacion'));
+
+        $aplicacion = Hxxi_Aplicacion::find($id);
+
+
+        return view('HXXI.aplicaciones.mostrar',['hxxi_aplicacion' => $aplicacion]);
     }
 
     /**
@@ -82,10 +87,11 @@ class AplicacionController extends Controller
      */
     public function update(Request $request, hxxi_aplicacion $hxxi_aplicacion)
     {
-        $request->validate(['Nombre' => 'required',
+        $request->validate(['nombre' => 'required|min:3|max:255',
                            ]);
+        $hxxi_aplicacion->Nombre = $request->input('nombre');
 
-        $hxxi_aplicacion->update($request->all());
+        $hxxi_aplicacion->update();
 
         return redirect()->route('hxxi.aplicaciones.index')
             ->with('message','Aplicación modificado correctamente');
@@ -99,6 +105,7 @@ class AplicacionController extends Controller
      */
     public function delete(hxxi_aplicacion $hxxi_aplicacion)
     {
+
         $hxxi_aplicacion->delete();
 
         return redirect()->route('hxxi.aplicaciones.index')
