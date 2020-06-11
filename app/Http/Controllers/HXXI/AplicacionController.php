@@ -4,7 +4,7 @@ namespace App\Http\Controllers\HXXI;
 
 use App\Http\Controllers\Controller;
 
-use App\Modelos\HXXI\hxxi_aplicacion;
+use App\Modelos\HXXI\Hxxi_Aplicacion;
 use Illuminate\Http\Request;
 
 class AplicacionController extends Controller
