@@ -34,15 +34,10 @@
                                     <div class="col-md-6">
                                         <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre"
                                                value="{{ $hxxi_aplicacion->Nombre }}" required autofocus>
-                                        @error('nombre')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <div class="text-danger">{{$errors->first('nombre')}}</div>
+                                        @error('nombre')  @include('includes.msj_campo') @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
                             </form>
                         </div>
                     </div>

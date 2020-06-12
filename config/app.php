@@ -80,15 +80,7 @@ return [
     |
     */
 
-    'locale' => 'es_ES',
-
-    /**
-    * Supported locales: An array containing all allowed languages
-    */
-    'supported-locales' => [
-        'es_ES',
-        'en_US'
-    ],
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'es',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------

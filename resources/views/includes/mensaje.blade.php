@@ -3,6 +3,11 @@
         {{ session('message') }}
     </div>
 @endif
+@if(session('success'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
 
 
 @if ($errors->any())

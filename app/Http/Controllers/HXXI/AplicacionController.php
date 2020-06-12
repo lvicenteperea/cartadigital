@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class AplicacionController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -94,7 +98,8 @@ class AplicacionController extends Controller
         $hxxi_aplicacion->update();
 
         return redirect()->route('hxxi.aplicaciones.index')
-            ->with('message','Aplicación modificado correctamente');
+            //->with('message','Aplicación modificado correctamente');
+            ->with('message', __('Apli_ok'));
     }
 
     /**
