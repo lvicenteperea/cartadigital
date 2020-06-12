@@ -58,7 +58,7 @@ class IdiomaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Modelos\HXXI\Hxxi_Idioma  $Hxxi_Idioma
+     * @param  $id de idioma
      * @return \Illuminate\Http\Response
      */
     public function mostrar($id)
@@ -75,9 +75,9 @@ class IdiomaController extends Controller
      * @param  \App\Modelos\HXXI\Hxxi_Idioma  $Hxxi_Idioma
      * @return \Illuminate\Http\Response
      */
-    public function editar(Hxxi_Idioma $Hxxi_Idioma)
+    public function editar(Hxxi_Idioma $hxxi_idioma)
     {
-        return view('hxxi.idiomas.editar',compact('Hxxi_Idioma'));
+        return view('hxxi.idiomas.editar',compact('hxxi_idioma'));
     }
 
     /**

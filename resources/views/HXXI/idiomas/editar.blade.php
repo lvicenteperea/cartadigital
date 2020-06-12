@@ -25,7 +25,7 @@
                         <br/ -->
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('hxxi.idiomas.update', ['hxxi_idioma' => $Hxxi_Idioma]) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('hxxi.idiomas.update', ['hxxi_idioma' => $hxxi_idioma]) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -33,13 +33,8 @@
                                     <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
                                     <div class="col-md-6">
                                         <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre"
-                                               value="{{ $Hxxi_Idioma->nombre }}" required autofocus>
-                                        @error('nombre')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <div class="text-danger">{{$errors->first('nombre')}}</div>
+                                               value="{{ $hxxi_idioma->nombre }}" required autofocus>
+                                        @error('nombre')  @include('includes.msj_campo') @enderror
                                     </div>
                                 </div>
 
@@ -47,13 +42,8 @@
                                     <label for="ansi" class="col-md-4 col-form-label text-md-right">{{ __('Ansi') }}</label>
                                     <div class="col-md-6">
                                         <input id="ansi" type="text" class="form-control @error('ansi') is-invalid @enderror" name="ansi"
-                                               value="{{ $Hxxi_Idioma->ansi }}" required >
-                                        @error('ansi')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <div class="text-danger">{{$errors->first('ansi')}}</div>
+                                               value="{{ $hxxi_idioma->ansi }}" required >
+                                        @error('ansi')  @include('includes.msj_campo') @enderror
                                     </div>
                                 </div>
 
@@ -61,13 +51,8 @@
                                     <label for="idioma" class="col-md-4 col-form-label text-md-right">{{ __('Idioma') }}</label>
                                     <div class="col-md-6">
                                         <input id="idioma" type="text" class="form-control @error('idioma') is-invalid @enderror" name="idioma"
-                                               value="{{ $Hxxi_Idioma->idioma }}" required autofocus>
-                                        @error('idioma')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <div class="text-danger">{{$errors->first('idioma')}}</div>
+                                               value="{{ $hxxi_idioma->idioma }}" required>
+                                        @error('idioma')  @include('includes.msj_campo') @enderror
                                     </div>
                                 </div>
 
@@ -75,13 +60,8 @@
                                     <label for="pais" class="col-md-4 col-form-label text-md-right">{{ __('Pais') }}</label>
                                     <div class="col-md-6">
                                         <input id="pais" type="text" class="form-control @error('pais') is-invalid @enderror" name="pais"
-                                               value="{{ $Hxxi_Idioma->pais }}" required>
-                                        @error('pais')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        <div class="text-danger">{{$errors->first('pais')}}</div>
+                                               value="{{ $hxxi_idioma->pais }}" required>
+                                        @error('pais')  @include('includes.msj_campo') @enderror
                                     </div>
                                 </div>
 
