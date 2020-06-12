@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Modelos;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,12 +42,14 @@ class User extends Authenticatable
 
     // Indicamos relación One to One
     public function users(){
-        return $this->hasOne('App\User', 'id_user_jefe'); 
+        return $this->hasOne('App\User', 'id_user_jefe');
     }
+
+
 
     // Indicamos relación One to One
     public function emp_empresas(){
-        return $this->hasOne('App\Modelos\Emp_Empresa', 'id_empresa'); 
+        return $this->hasOne('App\Modelos\Emp_Empresa', 'id_empresa');
     }
 
 }

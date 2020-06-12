@@ -12,14 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',          function () {return view('home');
-                                         });
-
 Route::get('/dashboard', function () { return view('dashboard');
                                          })->name('dashboard');
 
 Auth::routes();
+
 Route::get('/',                       'HomeController@index')->name('home');
+Route::get('/home',                   'HomeController@index');
 
 Route::get('/user/edita',             'UserController@edita')->name('user.edita');
 Route::post('/user/update',           'UserController@update')->name('user.update');
@@ -63,3 +62,20 @@ Route::get('/HXXI/idiomas/crear',                  'HXXI\IdiomaController@crear'
 Route::post('/HXXI/idiomas/create',                'HXXI\IdiomaController@create')->name('hxxi.idiomas.create');
 Route::delete('/HXXI/idiomas/borrar/{hxxi_idioma}','HXXI\IdiomaController@delete')->name('hxxi.idiomas.borrar');
 
+/*   TEXTOS  */
+Route::get('/HXXI/textos/index',                  'HXXI\TextoController@index')->name('hxxi.textos.index');
+Route::get('/HXXI/textos/mostrar/{id}',           'HXXI\TextoController@mostrar')->name('hxxi.textos.mostrar');
+Route::get('/HXXI/textos/editar/{hxxi_texto}',   'HXXI\TextoController@editar')->name('hxxi.textos.editar');
+Route::put('/HXXI/textos/update/{hxxi_texto}',   'HXXI\TextoController@update')->name('hxxi.textos.update');
+Route::get('/HXXI/textos/crear',                  'HXXI\TextoController@crear')->name('hxxi.textos.crear');
+Route::post('/HXXI/textos/create',                'HXXI\TextoController@create')->name('hxxi.textos.create');
+Route::delete('/HXXI/textos/borrar/{hxxi_texto}','HXXI\TextoController@delete')->name('hxxi.textos.borrar');
+
+/*   TEXTOS IDIOMAS */
+Route::get('/HXXI/txt_idiomas/index',                  'HXXI\TextoIdiomaController@index')->name('hxxi.txt_idiomas.index');
+Route::get('/HXXI/txt_idiomas/mostrar/{id}',           'HXXI\TextoIdiomaController@mostrar')->name('hxxi.txt_idiomas.mostrar');
+Route::get('/HXXI/txt_idiomas/editar/{hxxi_texto_idioma}',   'HXXI\TextoIdiomaController@editar')->name('hxxi.txt_idiomas.editar');
+Route::put('/HXXI/txt_idiomas/update/{hxxi_texto_idioma}',   'HXXI\TextoIdiomaController@update')->name('hxxi.txt_idiomas.update');
+Route::get('/HXXI/txt_idiomas/crear',                  'HXXI\TextoIdiomaController@crear')->name('hxxi.txt_idiomas.crear');
+Route::post('/HXXI/txt_idiomas/create',                'HXXI\TextoIdiomaController@create')->name('hxxi.txt_idiomas.create');
+Route::delete('/HXXI/txt_idiomas/borrar/{hxxi_texto_idioma}','HXXI\TextoIdiomaController@delete')->name('hxxi.txt_idiomas.borrar');

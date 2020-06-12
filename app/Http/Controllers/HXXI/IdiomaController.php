@@ -49,6 +49,9 @@ class IdiomaController extends Controller
 
         $idioma = new Hxxi_Idioma();
         $idioma->nombre = $request->input('nombre');
+        $idioma->ansi = $request->input('ansi');
+        $idioma->idioma = $request->input('idioma');
+        $idioma->pais = $request->input('pais');
         $idioma->save();
 
         return redirect()->route('hxxi.idiomas.index')
