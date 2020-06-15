@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role', 'id_user_jefe', 'nombre', 'apellidos', 'nick', 'email', 'password', 'id_empresa', 'imagen',
+        'role', 'id_user_jefe', 'nombre', 'apellidos', 'nick', 'email', 'password', 'id_empresa', 'imagen', 'id_aplicacion',
     ];
 
     /**
@@ -42,14 +42,17 @@ class User extends Authenticatable
 
     // Indicamos relación One to One
     public function users(){
-        return $this->hasOne('App\User', 'id_user_jefe');
+        return $this->hasOne('App\Modelos\User', 'id_user_jefe');
     }
-
-
 
     // Indicamos relación One to One
     public function emp_empresas(){
-        return $this->hasOne('App\Modelos\Emp_Empresa', 'id_empresa');
+        return $this->hasOne('App\Modelos\Emp\Emp_Empresa', 'id_empresa');
+    }
+
+    // Indicamos relación One to One
+    public function hxxi_aplicaciones(){
+        return $this->hasOne('App\Modelos\HXXI\Hxxi_Aplicacion', 'id_aplicacion');
     }
 
 }

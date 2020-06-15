@@ -8,8 +8,10 @@
             <div class="col-md-8">
                 @include('includes.mensaje')
 
-                <?php $cab = array("titulo" => __('Crear nuevo texto'),
-                                   "ruta"    => 'hxxi.txt_idiomas.index');
+                <?php $cab = array("titulo" => __('Lista textos idiomas'),
+                    "ruta"    => 'hxxi.txt_idiomas.crear',
+                    "btn_ruta" => __('btn_Crear')
+                );
                 ?>
                 @include('includes.cab_opciones')
 
@@ -34,7 +36,7 @@
                                 <td>{{ $texto->updated_at }}</td>
                                 <td><a href="{{ route('hxxi.txt_idiomas.mostrar',$texto) }}" class="btn btn-info">Mostrar</a>
                                     <a href="{{ route('hxxi.txt_idiomas.editar',$texto) }}" class="btn btn-primary">Editar</a>
-                                    <a href="" data-target="#modal-delete-{{$texto->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
+                                    <a href="" data-target="#modal-delete-{{ $texto->id }}" class="btn btn-danger" data-toggle="modal">Delete</a>
                                 </td>
                             </tr>
 

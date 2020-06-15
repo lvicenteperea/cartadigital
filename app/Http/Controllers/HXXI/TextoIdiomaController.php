@@ -95,11 +95,11 @@ class TextoIdiomaController extends Controller
                             'texto' => 'required',
         ]);
 
-        $hxxi_texto->id_texto = $request->input('id_texto');
-        $hxxi_texto->id_idioma = $request->input('id_idioma');
-        $hxxi_texto->texto = $request->input('texto');
+        $hxxi_texto_idioma->id_texto = $request->input('id_texto');
+        $hxxi_texto_idioma->id_idioma = $request->input('id_idioma');
+        $hxxi_texto_idioma->texto = $request->input('texto');
 
-        $hxxi_texto->update();
+        $hxxi_texto_idioma->update();
 
         return redirect()->route('hxxi.txt_idiomas.index')
             ->with('message','Texto modificado correctamente');

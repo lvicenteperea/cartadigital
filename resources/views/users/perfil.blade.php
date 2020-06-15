@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-6">
                     @if($user->imagen)
-                        <div class="image-container"> 
+                        <div class="image-container">
                         <img src="{{ route('user.avatar', ['NombFic' => $user->imagen]) }}" class="gran-avatar"/>
                         </div>
                     @endif
@@ -21,7 +21,8 @@
                     <h3>Imagen:  <strong> {{ ' '. $user->imagen }}</strong> </h3>
                     <h3>Rol:     <strong> {{ ' '. $user->role }}</strong> </h3>
                     <h3>Empresa: <strong> {{ ' '. $user->id_empresa }}</strong> </h3>
-                    <h3>Jefe:    <strong> {{ ' '. $user->id_user_jefe}}</strong> </h3>
+                    <h3>Jefe:    <strong> {{ ' '. $user->id_user_jefe }}</strong> </h3>
+                    <h3>Aplicación: <strong> {{ ' '. $user->id_aplicacion }}</strong> </h3>
                     <span> {{ 'Se unió: '. \Fechas::CuantoTiempoHace($user->created_at) }} </span>
                     <hr/>
                 </div>

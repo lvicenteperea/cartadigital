@@ -15,7 +15,7 @@
                     @endif
 
                     <h1>Esto es la Home</h1>
-                </div>
+                        <?php echo '-'. preg_match('/^[A-Za-z\d$@$!%*?&]{8,15}/', 'Holaw ewrewr') .'-'; ?>          </div>
             </div>
         </div>
     </div>

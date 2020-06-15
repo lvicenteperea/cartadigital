@@ -83,15 +83,25 @@
 
                         <div class="form-group row">
                             <label for="id_user_jefe" class="col-md-4 col-form-label text-md-right">{{ __('Jefe') }}</label>
-
                             <div class="col-md-6">
-                                <!-- input id="id_user_jefe" type="text" class="form-control @error('id_user_jefe') is-invalid @enderror" name="id_user_jefe" value="{ { Auth::user()->id_user_jefe }}" required autocomplete="id_user_jefe" -->
                                 <select name="id_user_jefe[]" id="id_user_jefe" class="form-control @error('id_user_jefe') is-invalid @enderror" class="form-control">
                                     @foreach($jefes as $jefe)
                                         <option value="{{ $jefe->id }}" {{ ($usuario->id_user_jefe == $jefe->id) ? 'selected':'' }}> {{ $jefe->nombre }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_user_jefe')  @include('includes.msj_campo') @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="id_aplicacion" class="col-md-4 col-form-label text-md-right">{{ __('Aplicación') }}</label>
+                            <div class="col-md-6">
+                                <select name="id_aplicacion[]" id="id_aplicacion" class="form-control @error('id_aplicacion') is-invalid @enderror" class="form-control">
+                                    @foreach($aplicaciones as $apli)
+                                        <option value="{{ $apli->id }}" {{ ($usuario->id_aplicacion == $apli->id) ? 'selected':'' }}> {{ $apli->Nombre }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_aplicacion')  @include('includes.msj_campo') @enderror
                             </div>
                         </div>
 

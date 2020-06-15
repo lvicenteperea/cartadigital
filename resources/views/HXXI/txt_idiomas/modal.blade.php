@@ -8,7 +8,7 @@
                 </button>
                 <h4 class="modal-title text-center" id="myModalLabel">{{ $modal["cabecera"] ?? "Confirmación" }}</h4>
             </div>
-            <form action="{ { route('hxxi.txt_idiomas.borrar', ['hxxi_texto_idioma' => $texto]) }}" method="POST">
+            <form action="{{ route('hxxi.txt_idiomas.borrar', ['hxxi_texto_idioma' => $texto]) }}" method="POST">
                 @csrf
                 @method('DELETE')
 

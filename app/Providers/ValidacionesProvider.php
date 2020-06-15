@@ -45,5 +45,13 @@ class ValidacionesProvider extends ServiceProvider
         Validator::extend('check_dns', function ($attribute, $value, $parameters, $validator) {
             return (new EmailValidator())->isValid($value, new DNSCheckValidation());
         });
+
+        Validator::extend('aplicacion', function ($attribute, $value, $parameters, $validator) {
+            if ($value == 1) {
+                return true;
+            }else{
+                return false;
+            }
+        });
     }
 }

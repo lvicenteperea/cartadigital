@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use \Auth;
 
 use App\Modelos\Emp\Emp_Empresa;
+use App\Modelos\HXXI\Hxxi_Aplicacion;
 use App\Modelos\User;
-use \Auth;
 
 
 class UserController extends Controller
@@ -35,11 +36,12 @@ class UserController extends Controller
     * Llamamos al formulario de edición del usuario
     */
     public function edita(){
-        $usuario  = Auth::user();
-        $empresas = Emp_Empresa::all();
-        $jefes    = User::all();
+        $usuario      = Auth::user();
+        $empresas     = Emp_Empresa::all();
+        $jefes        = User::all();
+        $aplicaciones = Hxxi_Aplicacion::all();
 
-        return view('users.edita', ['usuario'=>$usuario, 'jefes'=>$jefes, 'empresas'=>$empresas]);
+        return view('users.edita', ['usuario'=>$usuario, 'jefes'=>$jefes, 'empresas'=>$empresas, 'aplicaciones'=>$aplicaciones]);
     }
 
     /**
@@ -54,7 +56,7 @@ class UserController extends Controller
             'nombre'    => 'required|string|min:3|max:255',
             'apellidos' => 'required|string|min:3|max:255',
             'nick'      => 'required|string|min:5|max:255|unique:users,nick,'.$id,
-            'email'     => 'required|string|email|max:255|check_dns|unique:users,email,'.$id
+            'email'     => 'required|string|email|max:255|check_dns|unique:users,email,'.$id,
         ]);
 
         // *************************   Asignación de variables    *****************************
@@ -64,6 +66,7 @@ class UserController extends Controller
         $user->email       = $request->input('email');
         $user->id_empresa  = $request->input('id_empresa')[0];
         $user->id_user_jefe= $request->input('id_user_jefe')[0];
+        $user->id_aplicacion= $request->input('id_aplicacion')[0];
 
         $imagen_path = $request->file('imagen_path');
         if($imagen_path){
