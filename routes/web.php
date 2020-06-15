@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+| Organiza las rutas como en https://laraveles.com/organiza-tus-rutas-en-multiples-archivos-en-laravel/
 */
 Route::get('/dashboard', function () { return view('dashboard');
                                          })->name('dashboard');
@@ -36,13 +37,41 @@ Route::get('mail/envia',              'MailController@envia')->name('mail.envia'
  *  -------------------------------------------------------------------------------------------------
  **************************************************************************************************** */
 /*   APLICACIONES  */
-Route::get('/HXXI/aplicaciones/index',                      'HXXI\AplicacionController@index')->name('hxxi.aplicaciones.index');
-Route::get('/HXXI/aplicaciones/mostrar/{id}',               'HXXI\AplicacionController@mostrar')->name('hxxi.aplicaciones.mostrar');
-Route::get('/HXXI/aplicaciones/editar/{hxxi_aplicacion}',   'HXXI\AplicacionController@editar')->name('hxxi.aplicaciones.editar');
-Route::put('/HXXI/aplicaciones/update/{hxxi_aplicacion}',   'HXXI\AplicacionController@update')->name('hxxi.aplicaciones.update');
-Route::get('/HXXI/aplicaciones/crear',                      'HXXI\AplicacionController@crear')->name('hxxi.aplicaciones.crear');
-Route::post('/HXXI/aplicaciones/create',                    'HXXI\AplicacionController@create')->name('hxxi.aplicaciones.create');
-Route::delete('/HXXI/aplicaciones/borrar/{hxxi_aplicacion}','HXXI\AplicacionController@delete')->name('hxxi.aplicaciones.borrar');
+/* RESOURCES..... creo que es un lio
+Route::resource('/HXXI/aplicaciones',         'HXXI\AplicacionController', ['names'=>['index'  =>'hxxi.aplicaciones.index',
+                                                                                                     'show'    =>'hxxi.aplicaciones.mostrar',
+                                                                                                     'create'  =>'hxxi.aplicaciones.create',
+                                                                                                     'store'   =>'hxxi.aplicaciones.crear',
+                                                                                                     'update'  =>'hxxi.aplicaciones.update',
+                                                                                                     'destroy' =>'hxxi.aplicaciones.borrar',
+                                                                                           ]]
+                                                                                           ['parameters' => [''
+                                                                                           ]]
+               );
+Route::group(['middleware' => 'auth'], function () {
+        Route::get('edit', ['as' => 'edit', 'uses' => 'AccountController@getEdit']);
+    });
+*/
+/* GRUPOS muy fácil */
+
+Route::group(['prefix' => '/HXXI/aplicaciones', 'as'=>'hxxi.aplicaciones.', 'namespace'=>'HXXI'], function(){
+    Route::get('index',                      'AplicacionController@index')->name('index');
+    Route::get('mostrar/{id}',               'AplicacionController@mostrar')->name('mostrar');
+    Route::get('editar/{hxxi_aplicacion}',   'AplicacionController@editar')->name('editar');
+    Route::put('update/{hxxi_aplicacion}',   'AplicacionController@update')->name('update');
+    Route::get('crear',                      'AplicacionController@crear')->name('crear');
+    Route::post('create',                    'AplicacionController@create')->name('create');
+    Route::delete('borrar/{hxxi_aplicacion}','AplicacionController@delete')->name('borrar');
+});
+
+/* NORMAL creo que es lo mas sencillo e intuitivo*/
+//Route::get('/HXXI/aplicaciones/index',                      'HXXI\AplicacionController@index')->name('hxxi.aplicaciones.index');
+//Route::get('/HXXI/aplicaciones/mostrar/{id}',               'HXXI\AplicacionController@mostrar')->name('hxxi.aplicaciones.mostrar');
+//Route::get('/HXXI/aplicaciones/editar/{hxxi_aplicacion}',   'HXXI\AplicacionController@editar')->name('hxxi.aplicaciones.editar');
+//Route::put('/HXXI/aplicaciones/update/{hxxi_aplicacion}',   'HXXI\AplicacionController@update')->name('hxxi.aplicaciones.update');
+//Route::get('/HXXI/aplicaciones/crear',                      'HXXI\AplicacionController@crear')->name('hxxi.aplicaciones.crear');
+//Route::post('/HXXI/aplicaciones/create',                    'HXXI\AplicacionController@create')->name('hxxi.aplicaciones.create');
+//Route::delete('/HXXI/aplicaciones/borrar/{hxxi_aplicacion}','HXXI\AplicacionController@delete')->name('hxxi.aplicaciones.borrar');
 
 /*   DISPOSITIVOS  */
 Route::get('/HXXI/dispositivos/index',                       'HXXI\DispositivoController@index')->name('hxxi.dispositivos.index');

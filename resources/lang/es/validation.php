@@ -132,6 +132,15 @@ return [
         'password' => [
             'min' => 'La :attribute debe contener :min o más caracteres',
             'mi_pwd' => 'No ha pasado mi validación de PWD',
+
+            'mypassword.required' => '.El campo es requerido',
+            'required' => '.El campo es requerido',
+            'confirmed' => '.Los passwords no coinciden',
+            'max' => '.El máximo permitido son :max caracteres',
+//            'password.mi_pwd' => 'No ha pasado la de espacios',
+
+
+
         ],
         'email' => [
             'unique' => 'El :attribute ya ha sido registrado.',

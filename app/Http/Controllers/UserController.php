@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 use App\Modelos\Emp\Emp_Empresa;
-use App\User;
+use App\Modelos\User;
+use \Auth;
 
 
 class UserController extends Controller
@@ -25,7 +26,7 @@ class UserController extends Controller
     */
     public function perfil(){
 
-        $user = \Auth::user();
+        $user = Auth::user();
 
         return view('users.perfil', ['user' => $user]);
     }
@@ -34,7 +35,7 @@ class UserController extends Controller
     * Llamamos al formulario de edición del usuario
     */
     public function edita(){
-        $usuario  = \Auth::user();
+        $usuario  = Auth::user();
         $empresas = Emp_Empresa::all();
         $jefes    = User::all();
 
@@ -45,8 +46,8 @@ class UserController extends Controller
     * Modificamos el registro en la BBDD con lo que se haya introducido en el formulario
     */
     public function update(Request $request){
-        $user = \Auth::user();
-        $id   = \Auth::user()->id;
+        $user = Auth::user();
+        $id   = Auth::user()->id;
 
         // ************************  Validación de variables    *****************************
         $this->validate($request, [
@@ -108,6 +109,8 @@ class UserController extends Controller
      * redireccionamos nuevamente al formulario con un mensaje flash "message"
      * con un error indicando que sus credenciales son incorrectas.
      *
+     * mi_pwd --> app/Providers/ValidacionesProvider.php
+     *
      */
     public function updatePwd(Request $request){
 
@@ -118,11 +121,6 @@ class UserController extends Controller
 
         $messages = [
             'mypassword.required' => 'El campo es requerido',
-            'password.required' => 'El campo es requerido',
-            'password.confirmed' => 'Los passwords no coinciden',
-            'password.min' => 'El mínimo permitido son 6 caracteres',
-            'password.max' => 'El máximo permitido son 18 caracteres',
-//            'password.mi_pwd' => 'No ha pasado la de espacios',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -130,9 +128,9 @@ class UserController extends Controller
             return redirect()->route('user.edita')->withErrors($validator);
         }
         else{
-            if (Hash::check($request->mypassword, \Auth::user()->password)){
+            if (Hash::check($request->mypassword, Auth::user()->password)){
                 $user = new User;
-                $user->where('email', '=', \Auth::user()->email)
+                $user->where('email', '=', Auth::user()->email)
                      ->update(['password' => bcrypt($request->password)]);
 
                 return redirect()->route('user.perfil')->with('message', 'Password cambiado con éxito');

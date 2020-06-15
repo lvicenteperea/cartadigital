@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hxxi_Dispositivo extends Model
 {
-    protected $table = 'hxxi_dispositivos';
+    protected $table = 'cnt_dispositivos';
 
 
     protected $fillable = ['nombre'
