@@ -53,15 +53,14 @@ Route::group(['middleware' => 'auth'], function () {
     });
 */
 /* GRUPOS muy fácil */
-
 Route::group(['prefix' => '/HXXI/aplicaciones', 'as'=>'hxxi.aplicaciones.', 'namespace'=>'HXXI'], function(){
     Route::get('index',                      'AplicacionController@index')->name('index');
     Route::get('mostrar/{id}',               'AplicacionController@mostrar')->name('mostrar');
     Route::get('editar/{hxxi_aplicacion}',   'AplicacionController@editar')->name('editar');
     Route::put('update/{hxxi_aplicacion}',   'AplicacionController@update')->name('update');
-    Route::get('crear',                      'AplicacionController@crear')->name('crear');
-    Route::post('create',                    'AplicacionController@create')->name('create');
-    Route::delete('borrar/{hxxi_aplicacion}','AplicacionController@delete')->name('borrar');
+    Route::get('crear',                      'AplicacionController@crear')->name('crear')->middleware('auth');
+    Route::post('create',                    'AplicacionController@create')->name('create')->middleware('auth');
+    Route::delete('borrar/{hxxi_aplicacion}','AplicacionController@delete')->name('borrar')->middleware('auth');
 });
 
 /* NORMAL creo que es lo mas sencillo e intuitivo*/

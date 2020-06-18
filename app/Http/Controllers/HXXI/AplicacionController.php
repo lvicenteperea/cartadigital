@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 
 class AplicacionController extends Controller
 {
+    /**
+     * AplicacionController constructor.
+     * esta comentado porque hems puesto lo seguridad a nivel de Ruta
     public function __construct(){
         $this->middleware('auth');
     }
+    */
 
     /**
      * Display a listing of the resource.
