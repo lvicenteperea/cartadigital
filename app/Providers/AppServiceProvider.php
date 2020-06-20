@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+// use App\Modelos\HXXI\Hxxi_Menu;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // lo he puesto yo y lo comento yo
+        // view()->composer('welcome', function($view) {
+        // $view->with('menus', Hxxi_Menu::menus());
+        // });
+
     }
 }

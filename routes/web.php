@@ -107,3 +107,13 @@ Route::put('/HXXI/txt_idiomas/update/{hxxi_texto_idioma}',   'HXXI\TextoIdiomaCo
 Route::get('/HXXI/txt_idiomas/crear',                  'HXXI\TextoIdiomaController@crear')->name('hxxi.txt_idiomas.crear');
 Route::post('/HXXI/txt_idiomas/create',                'HXXI\TextoIdiomaController@create')->name('hxxi.txt_idiomas.create');
 Route::delete('/HXXI/txt_idiomas/borrar/{hxxi_texto_idioma}','HXXI\TextoIdiomaController@delete')->name('hxxi.txt_idiomas.borrar');
+
+
+/*   MENÚ */
+Route::get('/HXXI/menus/index',                'HXXI\MenuController@index')->name('hxxi.menus.index');
+Route::get('/HXXI/menus/mostrar/{id}',         'HXXI\MenuController@mostrar')->name('hxxi.menus.mostrar');
+Route::get('/HXXI/menus/editar/{hxxi_menu}',   'HXXI\MenuController@editar')->name('hxxi.menus.editar');
+Route::put('/HXXI/menus/update/{hxxi_menu}',   'HXXI\MenuController@update')->name('hxxi.menus.update');
+Route::get('/HXXI/menus/crear',                'HXXI\MenuController@crear')->name('hxxi.menus.crear');
+Route::post('/HXXI/menus/create',              'HXXI\MenuController@create')->name('hxxi.menus.create');
+Route::delete('/HXXI/menus/borrar/{hxxi_menu}','HXXI\MenuController@delete')->name('hxxi.menus.borrar');

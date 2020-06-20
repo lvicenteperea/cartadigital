@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('dashboard') }}">{{ Config::get('app.name') }}</a>
+            <a class="navbar-brand" href="{{ route('home') }}">{{ Config::get('app.name') }}</a>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">

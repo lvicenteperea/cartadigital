@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Modelos\HXXI\Hxxi_Menu;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -35,6 +36,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $menus = Hxxi_Menu::menus();
+
         $this->middleware('guest')->except('logout');
+
     }
 }
