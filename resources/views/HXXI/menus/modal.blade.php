@@ -8,7 +8,7 @@
                 </button>
                 <h4 class="modal-title text-center" id="myModalLabel">{{ $modal["cabecera"] ?? "Confirmación" }}</h4>
             </div>
-            <form action="{{ route('hxxi.textos.borrar', ['hxxi_menu' => $menu]) }}" method="POST">
+            <form action="{{ route('hxxi.menus.borrar', ['hxxi_menu' => $menu]) }}" method="POST">
                 @csrf
                 @method('DELETE')
 

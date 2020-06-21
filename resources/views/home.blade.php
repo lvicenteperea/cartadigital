@@ -18,7 +18,7 @@
                         <?php echo '-'. preg_match('/^[A-Za-z\d$@$!%*?&]{8,15}/', 'Holaw ewrewr') .'-'; ?>          </div>
 
                 <?php
-                    $menu = new \App\Modelos\HXXI\Hxxi_Menu();
+                    $menu    = new \App\Modelos\HXXI\Hxxi_Menu();
                     $menuAll = $menu->estatico();
                 ?>
 
@@ -27,14 +27,12 @@
                     {{ $item['id'] }} - {{ $item['padre'] }} - {{ $item['tipo'] }} - {{ $item['label'] }} - {{ $item['link'] }} <br/>
                 @endforeach
                 </p>
-                <p>
-                1 - 1 - opcion - Opción 1 - http://link1.com <br/>
-                2 - 2 - opcion - submenú 2 - <br/>
-                3 - 2 - submenu - submenú 2.1 - <br/>
-                4 - 3 - submenu - Opción 4- 2.1.1 - http://link2.1.com <br/>
-                5 - 2 - submenu - Opción 5 - 2.2 - http://link2.2.com <br/>
-                6 - 6 - opcion - Opción 6 - http://link5.com <br/>
-                </p>
+                <p>- 'id'=>'1', 'padre'=>'1', 'label'=>'Opción 1'</p>
+                <p>- 'id'=>'2', 'padre'=>'2', 'label'=>'submenú 2'</p>
+                <p>---- 'id'=>'3', 'padre'=>'2', 'label'=>'submenú 2.1'</p>
+                <p>-------- 'id'=>'4', 'padre'=>'3', 'label'=>'Opción 4-  2.1.1'</p>
+                <p>---- 'id'=>'5', 'padre'=>'2', 'label'=>'Opción 5 - 2.2'</p>
+                <p>- 'id'=>'6', 'padre'=>'6', 'label'=>'Opción 6'</p>
             </div>
         </div>
     </div>

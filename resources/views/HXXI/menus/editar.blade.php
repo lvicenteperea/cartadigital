@@ -19,85 +19,35 @@
                             @csrf
                             @method('PUT')
 
-                            <div class="form-group row">
-                                <label for="id_aplicacion" class="col-md-4 col-form-label text-md-right">{{ __('id_aplicacion') }}</label>
-                                <div class="col-md-6">
-                                    <input id="id_aplicacion" type="text" class="form-control @error('id_aplicacion') is-invalid @enderror" name="id_aplicacion" value="" required autofocus>
-                                    @error('id_aplicacion')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'id_aplicacion',         'id'=>'id_aplicacion',   'tipo'=>'text', 'nombre'=>'id_aplicacion',
+                                                              'valor'=>$hxxi_menu->id_aplicacion, 'requerido'=>'required', 'autofocus'=>'autofocus'])
 
-                            <div class="form-group row">
-                                <label for="id_menu" class="col-md-4 col-form-label text-md-right">{{ __('id_menu') }}</label>
-                                <div class="col-md-6">
-                                    <input id="id_menu" type="text" class="form-control @error('id_menu') is-invalid @enderror" name="id_menu" value="" required >
-                                    @error('id_menu')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'id_menu',          'id'=>'id_menu',            'tipo'=>'text', 'nombre'=>'id_menu',
+                                                               'valor'=>$hxxi_menu->id_menu, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="tooltip" class="col-md-4 col-form-label text-md-right">{{ __('tooltip') }}</label>
-                                <div class="col-md-6">
-                                    <input id="tooltip" type="text" class="form-control @error('tooltip') is-invalid @enderror" name="tooltip" value="" required >
-                                    @error('tooltip')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'tooltip',          'id'=>'tooltip',            'tipo'=>'text', 'nombre'=>'tooltip',
+                                                               'valor'=>$hxxi_menu->tooltip, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="label" class="col-md-4 col-form-label text-md-right">{{ __('label') }}</label>
-                                <div class="col-md-6">
-                                    <input id="label" type="text" class="form-control @error('label') is-invalid @enderror" name="label" value="" required >
-                                    @error('label')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'label',          'id'=>'label',            'tipo'=>'text', 'nombre'=>'label',
+                                                               'valor'=>$hxxi_menu->label, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="orden" class="col-md-4 col-form-label text-md-right">{{ __('orden') }}</label>
-                                <div class="col-md-6">
-                                    <input id="orden" type="text" class="form-control @error('orden') is-invalid @enderror" name="orden" value="" required >
-                                    @error('orden')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'orden',          'id'=>'orden',            'tipo'=>'text', 'nombre'=>'orden',
+                                                               'valor'=>$hxxi_menu->orden, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="link" class="col-md-4 col-form-label text-md-right">{{ __('link') }}</label>
-                                <div class="col-md-6">
-                                    <input id="link" type="text" class="form-control @error('link') is-invalid @enderror" name="link" value="" required >
-                                    @error('link')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'link',          'id'=>'link',            'tipo'=>'text', 'nombre'=>'link',
+                                                               'valor'=>$hxxi_menu->link, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('role') }}</label>
-                                <div class="col-md-6">
-                                    <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="" required>
-                                    @error('role')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'role',          'id'=>'role',            'tipo'=>'text', 'nombre'=>'role',
+                                                               'valor'=>$hxxi_menu->role, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="icono" class="col-md-4 col-form-label text-md-right">{{ __('icono') }}</label>
-                                <div class="col-md-6">
-                                    <input id="icono" type="text" class="form-control @error('icono') is-invalid @enderror" name="icono" value="" required>
-                                    @error('icono')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'icono',          'id'=>'icono',            'nombre'=>'icono',
+                                                               'valor'=>$hxxi_menu->icono, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="©" class="col-md-4 col-form-label text-md-right">{{ __('icono') }}</label>
-                                <div class="col-md-6">
-                                    <input id="icono" type="text" class="form-control @error('icono') is-invalid @enderror" name="icono" value="" required >
-                                    @error('icono')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'desde',          'id'=>'desde',            'tipo'=>'date', 'nombre'=>'desde',
+                                                               'valor'=>$hxxi_menu->desde, 'requerido'=>'required'])
 
-                            <div class="form-group row">
-                                <label for="hasta" class="col-md-4 col-form-label text-md-right">{{ __('hasta') }}</label>
-                                <div class="col-md-6">
-                                    <input id="hasta" type="text" class="form-control @error('hasta') is-invalid @enderror" name="hasta" value="" required>
-                                    @error('hasta')  @include('includes.msj_campo') @enderror
-                                </div>
-                            </div>
+                            @include('includes.campo_editar', ['label'=> 'hasta',          'id'=>'hasta',            'tipo'=>'date', 'nombre'=>'hasta',
+                                                               'valor'=>$hxxi_menu->hasta])
 
                             <button type="submit" class="btn btn-primary">{{ __('btn_Guardar') }}</button>
                         </form>

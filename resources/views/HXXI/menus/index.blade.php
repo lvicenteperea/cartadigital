@@ -56,7 +56,7 @@
 
                             <?php $modal = array("id"       => $menu->id,
                                                  "cabecera" => 'Confirmación de borrado',
-                                                 "menu"    => '¿Seguro que quieres borrar "'. $menu->descripcion .'"?',
+                                                 "menu"    => '¿Seguro que quieres borrar "'. $menu->label .'"?',
                                                  "boton1"   => 'Cancelar',
                                                  "boton2"   => 'Confirma borrado',
                                                 );
