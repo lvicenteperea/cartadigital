@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-use \Auth;
+use Illuminate\Support\Facades\Auth;
 
 use App\Modelos\Emp\Emp_Empresa;
 use App\Modelos\HXXI\Hxxi_Aplicacion;
@@ -55,8 +55,8 @@ class UserController extends Controller
         $this->validate($request, [
             'nombre'    => 'required|string|min:3|max:255',
             'apellidos' => 'required|string|min:3|max:255',
-            'nick'      => 'required|string|min:5|max:255|unique:users,nick,'.$id,
-            'email'     => 'required|string|email|max:255|check_dns|unique:users,email,'.$id,
+            'nick'      => 'required|string|min:5|max:255|unique:hxxi_users,nick,'.$id,
+            'email'     => 'required|string|email|max:255|check_dns|unique:hxxi_users,email,'.$id,
         ]);
 
         // *************************   Asignación de variables    *****************************
