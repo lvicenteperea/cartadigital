@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="page-header">{{ __('Menus') }}</h1>
+    <h1 class="page-header">{{ __('Usuarios') }}</h1>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -9,7 +9,7 @@
                 @include('includes.mensaje')
 
                 <?php $cab = array("titulo" => __('Lista'),
-                                   "ruta"    => 'hxxi.menus.crear',
+                                   "ruta"    => 'hxxi.usuarios.crear',
                                    "btn_ruta" => __('btn_Crear')
                 );
                 ?>
@@ -20,52 +20,50 @@
                         <tr>
                             <th>No</th>
                             <th>id_aplicacion</th>
-                            <th>id_menu</th>
-                            <th>tootip</th>
-                            <th>label</th>
-                            <th>orden</th>
-                            <th>link</th>
-                            <th>role</th>
-                            <th>icono</th>
-                            <th>desde</th>
-                            <th>hasta</th>
+                            <th>Jefe</th>
+                            <th>Empresa</th>
+                            <th>Role</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Nick</th>
+                            <th>Email</th>
+                            <th>Imagen</th>
                             <th>creado</th>
                             <th>modificado</th>
                             <th width="280px">Action</th>
                         </tr>
-                        @foreach ($menus as $menu)
+                        @foreach ($usuarios as $usuario)
                             <tr>
-                                <td>{{ $menu->id }}</td>
-                                <td>{{ $menu->id_aplicacion }}</td>
-                                <td>{{ $menu->id_menu }}</td>
-                                <td>{{ $menu->tootip }}</td>
-                                <td>{{ $menu->label }}</td>
-                                <td>{{ $menu->orden }}</td>
-                                <td>{{ $menu->link }}</td>
-                                <td>{{ $menu->role }}</td>
-                                <td>{{ $menu->icono }}</td>
-                                <td>{{ $menu->desde }}</td>
-                                <td>{{ $menu->hasta }}</td>
-                                <td>{{ $menu->created_at }}</td>
-                                <td>{{ $menu->updated_at }}</td>
-                                <td><a href="{{ route('hxxi.menus.mostrar',$menu) }}" class="btn btn-info">Mostrar</a>
-                                    <a href="{{ route('hxxi.menus.editar',$menu) }}" class="btn btn-primary">Editar</a>
-                                    <a href="" data-target="#modal-delete-{{$menu->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
+                                <td>{{ $usuario->id }}</td>
+                                <td>{{ $usuario->id_aplicacion }}</td>
+                                <td>{{ $usuario->id_user_jefe }}</td>
+                                <td>{{ $usuario->id_empresa }}</td>
+                                <td>{{ $usuario->role }}</td>
+                                <td>{{ $usuario->nombre }}</td>
+                                <td>{{ $usuario->apellidos }}</td>
+                                <td>{{ $usuario->nick }}</td>
+                                <td>{{ $usuario->email }}</td>
+                                <td>{{ $usuario->imagen }}</td>
+                                <td>{{ $usuario->created_at }}</td>
+                                <td>{{ $usuario->updated_at }}</td>
+                                <td><a href="{{ route('hxxi.usuarios.mostrar',$usuario) }}" class="btn btn-info">Mostrar</a>
+                                    <a href="{{ route('hxxi.usuarios.editar',$usuario) }}" class="btn btn-primary">Editar</a>
+                                    <a href="" data-target="#modal-delete-{{$usuario->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
                                 </td>
                             </tr>
 
-                            <?php $modal = array("id"       => $menu->id,
+                            <?php $modal = array("id"       => $usuario->id,
                                                  "cabecera" => 'Confirmación de borrado',
-                                                 "menu"    => '¿Seguro que quieres borrar "'. $menu->label .'"?',
+                                                 "menu"    => '¿Seguro que quieres borrar "'. $usuario->label .'"?',
                                                  "boton1"   => 'Cancelar',
                                                  "boton2"   => 'Confirma borrado',
                                                 );
                             ?>
-                            @include('HXXI.menus.modal')
+                            @include('HXXI.usuarios.modal')
                         @endforeach
                     </table>
 
-                    {!! $menus->links() !!}
+                    {!! $usuarios->links() !!}
                 </div>
             </div>
         </div>

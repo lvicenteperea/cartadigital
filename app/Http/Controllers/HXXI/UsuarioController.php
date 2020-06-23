@@ -45,8 +45,8 @@ class UsuarioController extends Controller
             'role' => 'required|min:3|max:20',
             'nombre' => 'required|min:3|max:100',
             'apellidos' => 'required|min:3|max:200',
-            'nick'      => 'required|string|min:5|max:100|unique:hxxi_users,nick,'.$id,
-            'email'     => 'required|string|email|max:255|check_dns|unique:hxxi_users,email,'.$id,
+            'nick'      => 'required|string|min:5|max:100|unique:hxxi_users,nick,'.$usuario->id,
+            'email'     => 'required|string|email|max:255|check_dns|unique:hxxi_users,email,'.$usuario->id,
             'password' => 'required|password',
             'imagen' => 'required|min:3|max:255',
         ]);

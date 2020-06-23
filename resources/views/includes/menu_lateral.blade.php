@@ -7,6 +7,7 @@
             @include('includes.opcion', ['opcion' => ['submenu'=>[], 'link'=>'hxxi.textos.index', 'label'=>'Textos']])
             @include('includes.opcion', ['opcion' => ['submenu'=>[], 'link'=>'hxxi.txt_idiomas.index', 'label'=>'Textos Idiomas']])
             @include('includes.opcion', ['opcion' => ['submenu'=>[], 'link'=>'hxxi.menus.index', 'label'=>'Menú']])
+            @include('includes.opcion', ['opcion' => ['submenu'=>[], 'link'=>'hxxi.usuarios.index', 'label'=>'Usuarios']])
         @endauth
 
         @include('includes.opcion', ['opcion' => ['submenu'=>[], 'link'=>'dashboard', 'label'=>'Analytics']])

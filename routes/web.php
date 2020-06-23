@@ -117,3 +117,12 @@ Route::put('/HXXI/menus/update/{hxxi_menu}',   'HXXI\MenuController@update')->na
 Route::get('/HXXI/menus/crear',                'HXXI\MenuController@crear')->name('hxxi.menus.crear');
 Route::post('/HXXI/menus/create',              'HXXI\MenuController@create')->name('hxxi.menus.create');
 Route::delete('/HXXI/menus/borrar/{hxxi_menu}','HXXI\MenuController@delete')->name('hxxi.menus.borrar');
+
+/*   USUARIOS */
+Route::get('/HXXI/usuarios/index',                   'HXXI\UsuarioController@index')->name('hxxi.usuarios.index');
+Route::get('/HXXI/usuarios/mostrar/{id}',            'HXXI\UsuarioController@mostrar')->name('hxxi.usuarios.mostrar');
+Route::get('/HXXI/usuarios/editar/{hxxi_usuario}',   'HXXI\UsuarioController@editar')->name('hxxi.usuarios.editar');
+Route::put('/HXXI/usuarios/update/{hxxi_usuario}',   'HXXI\UsuarioController@update')->name('hxxi.usuarios.update');
+Route::get('/HXXI/usuarios/crear',                   'HXXI\UsuarioController@crear')->name('hxxi.usuarios.crear');
+Route::post('/HXXI/usuarios/create',                 'HXXI\UsuarioController@create')->name('hxxi.usuarios.create');
+Route::delete('/HXXI/usuarios/borrar/{hxxi_usuario}','HXXI\UsuarioController@delete')->name('hxxi.usuarios.borrar');

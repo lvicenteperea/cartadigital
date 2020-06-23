@@ -16,7 +16,7 @@
                type="{{ $tipo ?? 'text'}}"
                class="form-control @error('{{ $id }}') is-invalid @enderror"
                name="{{ $nombre }}"
-               value="{{ $valor }}"
+               value="{{ $valor ?? ''}}"
                @isset($requerido)
                     $requerido
                @endisset
