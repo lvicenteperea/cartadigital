@@ -16,7 +16,7 @@
                 @include('includes.cab_opciones')
 
                 <div class="card">
-                    <table class="table table-bordered">
+                    <table class="tabla-crud table table-bordered">
                         <tr>
                             <th>No</th>
                             <th>Nombre</th>
@@ -25,22 +25,30 @@
                             <th width="280px">Action</th>
                         </tr>
                         @foreach ($dispositivos as $disp)
+                            <?php
+                                /*--- Parametros para los includes ---*/
+                                $crud = array("ruta" => "hxxi.dispositivos",
+                                              "item" => $disp,
+                                );
+                                $modal = array("cabecera" => 'Confirmación de borrado',
+                                               "texto"    => '¿Seguro que quieres borrar "'. $disp->nombre .'"?',
+                                               "boton1" => 'Cancelar',
+                                               "boton2" => 'Confirma borrado'
+                                );
+                            ?>
                             <tr>
                                 <td>{{ $disp->id }}</td>
                                 <td>{{ $disp->nombre }}</td>
                                 <td>{{ $disp->created_at }}</td>
                                 <td>{{ $disp->updated_at }}</td>
-                                <td><a href="{{ route('hxxi.dispositivos.mostrar',$disp) }}" class="btn btn-info">Mostrar</a>
-                                    <a href="{{ route('hxxi.dispositivos.editar',$disp) }}" class="btn btn-primary">Editar</a>
-                                    <a  href="" data-target="#modal-delete-{{$disp->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
+                                <td>
+                                    <!-- a href="{ { route('hxxi.dispositivos.mostrar',$disp) }}" class="btn btn-info">Mostrar</a>
+                                    <a href="{ { route('hxxi.dispositivos.editar',$disp) }}" class="btn btn-primary">Editar</a>
+                                    <a  href="" data-target="#modal-delete-{ {$disp->id}}" class="btn btn-danger" data-toggle="modal">Delete</a -->
+                                    @include('includes.crud')
                                 </td>
                             </tr>
 
-                            <?php $modal = array("cabecera" => 'Confirmación de borrado',
-                                                 "texto"    => '¿Seguro que quieres borrar "'. $disp->nombre .'"?',
-                                                 "boton1" => 'Cancelar',
-                                                 "boton2" => 'Confirma borrado');
-                            ?>
                             @include('HXXI.dispositivos.modal')
                         @endforeach
                     </table>

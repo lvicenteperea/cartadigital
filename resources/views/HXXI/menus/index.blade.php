@@ -16,7 +16,7 @@
                 @include('includes.cab_opciones')
 
                 <div class="card">
-                    <table class="table table-bordered">
+                    <table class="tabla-crud table table-bordered">
                         <tr>
                             <th>No</th>
                             <th>id_aplicacion</th>
@@ -34,7 +34,18 @@
                             <th width="280px">Action</th>
                         </tr>
                         @foreach ($menus as $menu)
-                            <tr>
+                            <?php
+                                /*--- Parametros para los includes ---*/
+                                $crud = array("ruta" => "hxxi.menus",
+                                              "item" => $menu,
+                                );
+                                $modal = array("id"       => $menu->id,
+                                               "cabecera" => 'Confirmación de borrado',
+                                               "menu"     => '¿Seguro que quieres borrar "'. $menu->label .'"?',
+                                               "boton1"   => 'Cancelar',
+                                               "boton2"   => 'Confirma borrado',
+                                );
+                            ?>                            <tr>
                                 <td>{{ $menu->id }}</td>
                                 <td>{{ $menu->id_aplicacion }}</td>
                                 <td>{{ $menu->id_menu }}</td>
@@ -48,19 +59,14 @@
                                 <td>{{ $menu->hasta }}</td>
                                 <td>{{ $menu->created_at }}</td>
                                 <td>{{ $menu->updated_at }}</td>
-                                <td><a href="{{ route('hxxi.menus.mostrar',$menu) }}" class="btn btn-info">Mostrar</a>
-                                    <a href="{{ route('hxxi.menus.editar',$menu) }}" class="btn btn-primary">Editar</a>
-                                    <a href="" data-target="#modal-delete-{{$menu->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
+                                <td>
+                                    <!-- a href="{ { route('hxxi.menus.mostrar',$menu) }}" class="btn btn-info">Mostrar</a>
+                                    <a href="{ { route('hxxi.menus.editar',$menu) }}" class="btn btn-primary">Editar</a>
+                                    <a href="" data-target="#modal-delete-{ {$menu->id}}" class="btn btn-danger" data-toggle="modal">Delete</a -->
+                                    @include('includes.crud')
                                 </td>
                             </tr>
 
-                            <?php $modal = array("id"       => $menu->id,
-                                                 "cabecera" => 'Confirmación de borrado',
-                                                 "menu"    => '¿Seguro que quieres borrar "'. $menu->label .'"?',
-                                                 "boton1"   => 'Cancelar',
-                                                 "boton2"   => 'Confirma borrado',
-                                                );
-                            ?>
                             @include('HXXI.menus.modal')
                         @endforeach
                     </table>

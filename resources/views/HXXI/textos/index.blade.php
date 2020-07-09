@@ -16,7 +16,8 @@
                 @include('includes.cab_opciones')
 
                 <div class="card">
-                    <table class="table table-bordered">
+                    <!-- table class="table table-bordered" -->
+                    <table class="tabla-crud table table-bordered">
                         <tr>
                             <th>No</th>
                             <th>Descripción</th>
@@ -27,6 +28,18 @@
                             <th width="280px">Action</th>
                         </tr>
                         @foreach ($textos as $texto)
+                            <?php
+                                /*--- Parametros para los includes ---*/
+                                $crud = array("ruta" => "hxxi.textos",
+                                              "item" => $texto,
+                                             );
+                                $modal = array("id"       => $texto->id,
+                                               "cabecera" => 'Confirmación de borrado',
+                                               "texto"    => '¿Seguro que quieres borrar "'. $texto->descripcion .'"?',
+                                               "boton1"   => 'Cancelar',
+                                               "boton2"   => 'Confirma borrado',
+                                              );
+                            ?>
                             <tr>
                                 <td>{{ $texto->id }}</td>
                                 <td>{{ $texto->descripcion }}</td>
@@ -34,20 +47,18 @@
                                 <td>{{ $texto->subdivision }}</td>
                                 <td>{{ $texto->created_at }}</td>
                                 <td>{{ $texto->updated_at }}</td>
-                                <td><a href="{{ route('hxxi.txt_idiomas.index') }}" class="btn btn-default">Textos</a>
-                                    <a href="{{ route('hxxi.textos.mostrar',$texto) }}" class="btn btn-info">Mostrar</a>
-                                    <a href="{{ route('hxxi.textos.editar',$texto) }}" class="btn btn-primary">Editar</a>
-                                    <a href="" data-target="#modal-delete-{{$texto->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
+
+                                <td>
+                                    <!-- a href="{ { route('hxxi.txt_idiomas.index') }}" class="btn btn-default">Textos</a>
+                                    <a href="{ { route('hxxi.textos.mostrar',$texto) }}" class="btn btn-info">Mostrar</a>
+                                    <a href="{ { route('hxxi.textos.editar',$texto) }}" class="btn btn-primary">Editar</a>
+                                    <a href="" data-target="#modal-delete-{ {$texto->id}}" class="btn btn-danger" data-toggle="modal">Delete</a -->
+
+                                    <a href="{{ route('hxxi.txt_idiomas.index') }}" class="boton-icono"><img src="/css/iconos/list.svg" alt="Textos" width="15" height="15" /></a>
+                                    @include('includes.crud')
                                 </td>
                             </tr>
 
-                            <?php $modal = array("id"       => $texto->id,
-                                                 "cabecera" => 'Confirmación de borrado',
-                                                 "texto"    => '¿Seguro que quieres borrar "'. $texto->descripcion .'"?',
-                                                 "boton1"   => 'Cancelar',
-                                                 "boton2"   => 'Confirma borrado',
-                                                );
-                            ?>
                             @include('HXXI.textos.modal')
                         @endforeach
                     </table>

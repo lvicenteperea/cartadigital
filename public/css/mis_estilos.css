@@ -1,3 +1,26 @@
+.tabla-crud{
+    border: 1px solid blue;
+    background-color: #1b4b72;
+    width: 100%;
+    text-align: left;
+}
+
+.tabla-crud th, td {
+    width: 50px;
+    word-wrap: break-word;
+}
+
+.tabla-crud th{
+    border: 2px solid;
+    background: #1d68a7;
+    text-align: center;
+}
+
+.tabla-crud tr:nth-child(odd) {background-color: grey;}
+
+.tabla-crud tr:nth-child(even) {background-color: pink;}
+
+
 .image-container{
     width: 100%;
     max-height: 300px;

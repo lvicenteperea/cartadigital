@@ -16,7 +16,7 @@
                 @include('includes.cab_opciones')
 
                 <div class="card">
-                    <table class="table table-bordered">
+                    <table class="tabla-crud table table-bordered">
                         <tr>
                             <th>No</th>
                             <th>Nombre</th>
@@ -25,22 +25,30 @@
                             <th width="280px">Action</th>
                         </tr>
                         @foreach ($aplicaciones as $apli)
+                            <?php
+                                /*--- Parametros para los includes ---*/
+                                $crud = array("ruta" => "hxxi.aplicaciones",
+                                              "item" => $apli,
+                                );
+                                $modal = array("cabecera" => 'Confirmación de borrado',
+                                               "texto"    => '¿Seguro que quieres borrar "'. $apli->Nombre .'"?',
+                                               "boton1"   => 'Cancelar',
+                                               "boton2"   => 'Confirma borrado'
+                                );
+                            ?>
                             <tr>
                                 <td>{{ $apli->id }}</td>
                                 <td>{{ $apli->Nombre }}</td>
                                 <td>{{ $apli->created_at }}</td>
                                 <td>{{ $apli->updated_at }}</td>
-                                <td><a href="{{ route('hxxi.aplicaciones.mostrar',$apli) }}" class="btn btn-info">Mostrar</a>
-                                    <a href="{{ route('hxxi.aplicaciones.editar',$apli) }}" class="btn btn-primary">Editar</a>
-                                    <a  href="" data-target="#modal-delete-{{$apli->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
+                                <td>
+                                    <!-- a href="{ { route('hxxi.aplicaciones.mostrar',$apli) }}" class="btn btn-info">Mostrar</a>
+                                    <a href="{ { route('hxxi.aplicaciones.editar',$apli) }}" class="btn btn-primary">Editar</a>
+                                    <a  href="" data-target="#modal-delete-{ {$apli->id}}" class="btn btn-danger" data-toggle="modal">Delete</a -->
+                                    @include('includes.crud')
                                 </td>
                             </tr>
 
-                            <?php $modal = array("cabecera" => 'Confirmación de borrado',
-                                                 "texto"    => '¿Seguro que quieres borrar "'. $apli->Nombre .'"?',
-                                                 "boton1" => 'Cancelar',
-                                                 "boton2" => 'Confirma borrado');
-                            ?>
                             @include('HXXI.aplicaciones.modal')
                         @endforeach
                     </table>

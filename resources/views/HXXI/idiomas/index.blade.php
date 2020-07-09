@@ -16,7 +16,7 @@
                 @include('includes.cab_opciones')
 
                 <div class="card">
-                    <table class="table table-bordered">
+                    <table class="tabla-crud table table-bordered">
                         <tr>
                             <th>No</th>
                             <th>Nombre</th>
@@ -27,24 +27,31 @@
                             <th width="280px">Action</th>
                         </tr>
                         @foreach ($idiomas as $idioma)
-                            <tr>
+                            <?php
+                                /*--- Parametros para los includes ---*/
+                                $crud = array("ruta" => "hxxi.idiomas",
+                                              "item" => $idioma,
+                                );
+                                $modal = array("cabecera" => 'Confirmación de borrado',
+                                               "texto"    => '¿Seguro que quieres borrar "'. $idioma->nombre .'"?',
+                                               "boton1" => 'Cancelar',
+                                               "boton2" => 'Confirma borrado'
+                                );
+                            ?>                            <tr>
                                 <td>{{ $idioma->id }}</td>
                                 <td>{{ $idioma->nombre }}</td>
                                 <td>{{ $idioma->ansi }}</td>
                                 <td>{{ $idioma->idioma }}_{{ $idioma->pais }}</td>
                                 <td>{{ $idioma->created_at }}</td>
                                 <td>{{ $idioma->updated_at }}</td>
-                                <td><a href="{{ route('hxxi.idiomas.mostrar',$idioma) }}" class="btn btn-info">Mostrar</a>
-                                    <a href="{{ route('hxxi.idiomas.editar',$idioma) }}" class="btn btn-primary">Editar</a>
-                                    <a  href="" data-target="#modal-delete-{{$idioma->id}}" class="btn btn-danger" data-toggle="modal">Delete</a>
+                                <td>
+                                    <!-- a href="{ { route('hxxi.idiomas.mostrar',$idioma) }}" class="btn btn-info">Mostrar</a>
+                                    <a href="{ { route('hxxi.idiomas.editar',$idioma) }}" class="btn btn-primary">Editar</a>
+                                    <a  href="" data-target="#modal-delete-{ {$idioma->id}}" class="btn btn-danger" data-toggle="modal">Delete</a -->
+                                    @include('includes.crud')
                                 </td>
                             </tr>
 
-                            <?php $modal = array("cabecera" => 'Confirmación de borrado',
-                                                 "texto"    => '¿Seguro que quieres borrar "'. $idioma->nombre .'"?',
-                                                 "boton1" => 'Cancelar',
-                                                 "boton2" => 'Confirma borrado');
-                            ?>
                             @include('HXXI.idiomas.modal')
                         @endforeach
                     </table>
